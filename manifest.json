@@ -1,0 +1,51 @@
+{
+    "manifest_version": 2,
+    "name": "AppName",
+    "version": "0.2",
+  
+    "browser_action":{
+        "default_title":"AppTittle",
+        "default_icon":"./icons/icon_128.png",
+        "default_popup":"popup/popup.html"
+    },
+    "description": "_Extensión de Chromium para seguir productos en de tiendas online y visualizar sus precios a lo largo del tiempo_",
+    "icons": {
+      "16": "icons/icon_16.png",
+      "32": "icons/icon_32.png",
+      "48": "icons/icon_48.png",
+      "128": "icons/icon_128.png",
+      "400": "icons/icon_400.png"
+    },
+    "background": {
+      "page": "scripts/background.bundle.mjs"
+    },
+    "permissions": [
+      "storage",
+      "unlimitedStorage",
+      "notifications",
+      "activeTab",
+      "tabs",
+      "cookies",
+      "http://*/*",
+      "https://*/*",
+      "https://www.example.com/folder/file_api.js",
+      "https://www.example.com/*"
+    ],
+    "web_accessible_resources": [
+      "images/*.png",
+      "scripts/content.bundle.mjs",
+      "scripts/lib/jquery-3.6.0.min.js",
+      "scripts/lib/loader.js"
+    ],
+    "content_security_policy": "script-src 'self' https://www.example.com; object-src 'self'",
+    "content_scripts": [
+      {
+          "js": [
+              "scripts/content.bundle.mjs",
+              "scripts/lib/jquery-3.6.0.min.js",
+              "scripts/lib/loader.js"
+          ],
+          "run_at": "document_end"
+      }
+  ]
+  }
